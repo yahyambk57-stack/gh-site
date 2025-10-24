@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beauty-Ghizlane</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <img src="photos/leaves.png" alt="feuilles" class="leaf-left">
+<img src="photos/leaves.png" alt="feuilles" class="leaf-right">
+  <header>
+  <header>
+  <div class="header-content">
+    <h1>Beauty-Ghizlane</h1>
+  </div>
+
+  <a href="https://www.instagram.com/ghizlane_beauty55/" target="_blank" class="insta-float">
+    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram">
+  </a>
+</header>
+
+  </header>
+
+  <!-- BARRE DE RECHERCHE + BOUTONS -->
+  <div class="search-container">
+    <input type="text" id="search" placeholder="Rechercher un parfum...">
+  </div>
+
+  <div class="controls">
+        <button onclick="filterCategory('Millesime')">Millesime</button>
+    <button onclick="filterCategory('luxe')">Luxury</button>
+        <button onclick="filterCategory('Gels')">Gels douche</button>
+    <button onclick="filterCategory('Creme')">Creme Parfumée</button>
+        <button onclick="filterCategory('all')">Tous</button>
+        <button class="btn" onclick="goToCart()">Aller au panier</button>
+  </div>
+
+  <!-- PRODUITS -->
+  <section class="product-grid" id="productList">
+    <div class="product-card" data-category="Millesime" onclick="viewProduct('Millesime01')">
+      <img src="photos/N°01.png" alt="Parfum 1">
+      <h3>Millésime N°01 (Inspiré par One Million)</h3>
+      <p class="price">35,00 €</p>
+           </div>
+
+    <div class="product-card" data-category="Millesime" onclick="viewProduct('Millesime02')">
+      <img src="photos/N°01.png" alt="Parfum 2">
+      <h3>Millésime N°02 (Inspiré par Acqua di Giò)</h3>
+      <p class="price">35,00 €</p>
+       </div>
+
+    <div class="product-card" data-category="Millesime" onclick="viewProduct('Millesime03')">
+      <img src="photos/N°01.png" alt="Parfum 3">
+      <h3>Millésime N°03 (Inspiré par Fahrenheit)</h3>
+      <p class="price">35,00 €</p>
+       </div>
+
+    <div class="product-card" data-category="Millesime" onclick="viewProduct('Millesime04')">
+      <img src="photos/N°01.png" alt="Parfume 4">
+      <h3>Millésime N°04 (Inspiré par The One)</h3>
+      <p class="price">35,00 €</p>
+          </div>
+    <div class="product-card" data-category="luxe" onclick="viewProduct('luxe05')">
+      <img src="photos/N°02.png" alt="Parfume 5">
+      <h3>Luxury N°74 (Inspiré par Black Afgano)</h3>
+      <p class="price">52,00 €</p>
+    </div>
+    <div class="product-card" data-category="luxe" onclick="viewProduct('luxe06')">
+      <img src="photos/N°02.png" alt="Parfume 6">
+      <h3>Luxury N°75 (Inspiré par X for Men)</h3>
+      <p class="price">52,00 €</p>
+    </div>
+    <div class="product-card" data-category="luxe" onclick="viewProduct('luxe07')">
+      <img src="photos/N°03.png" alt="Parfume 7">
+      <h3>Luxury N°101 (Inspiré par Velvet Amber Skin)</h3>
+      <p class="price">52,00 €</p>
+    </div>
+    <div class="product-card" data-category="luxe" onclick="viewProduct('luxe08')">
+      <img src="photos/N°02.png" alt="Parfume 8">
+      <h3>Luxury N°102 (Inspiré par Velvet Amber Sun)</h3>
+      <p class="price">52,00 €</p>
+    </div>
+    <div class="product-card" data-category="Gels" onclick="viewProduct('Gels09')">
+      <img src="photos/N°04.png" alt="Gels 9">
+      <h3>Gel douche N°01 (Inspiré par One Million)</h3>
+      <p class="price">15,90 €</p>
+    </div>
+    <div class="product-card" data-category="Gels" onclick="viewProduct('Gels10')">
+      <img src="photos/N°04.png" alt="Gels 10">
+      <h3>Gel douche N°02 (Inspiré par Acqua di Giò)</h3>
+      <p class="price">15,90 €</p>
+    </div>
+    <div class="product-card" data-category="Gels" onclick="viewProduct('Gels11')">
+      <img src="photos/N°04.png" alt="Gels 11">
+      <h3>Gel douche N°03 (Inspiré par Fahrenheit)</h3>
+      <p class="price">15,90 €</p>
+    </div>
+    <div class="product-card" data-category="Gels" onclick="viewProduct('Gels12')">
+      <img src="photos/N°04.png" alt="Gels 12">
+      <h3>Gel douche N°07 (Inspiré par J’adore)</h3>
+      <p class="price">15,90 €</p>
+    </div>
+    <div class="product-card" data-category="Creme" onclick="viewProduct('Creme13')">
+      <img src="photos/N°05.png" alt="Creme 13">
+      <h3>Crème parfumée N°07 (Inspiré par J’adore)</h3>
+      <p class="price">17,90 €</p>
+    </div>
+    <div class="product-card" data-category="Creme" onclick="viewProduct('Creme14')">
+      <img src="photos/N°05.png" alt="Creme 14">
+      <h3>Crème parfumée N°10 (Inspiré par Alien)</h3>
+      <p class="price">17,90 €</p>
+    </div>
+    <div class="product-card" data-category="Creme" onclick="viewProduct('Creme15')">
+      <img src="photos/N°05.png" alt="Creme 15">
+      <h3>Crème parfumée N°19 (Inspiré par Lady Million)</h3>
+      <p class="price">17,90 €</p>
+    </div>
+    <div class="product-card" data-category="Creme" onclick="viewProduct('Creme16')">
+      <img src="photos/N°05.png" alt="Creme 16">
+      <h3>Crème parfumée N°23 (Inspiré par Hypnotic Poison)</h3>
+      <p class="price">17,90 €</p>
+    </div>
+<div class="product-card" data-category="luxe" onclick="viewProduct('luxe17')">
+      <img src="photos/N°06.png" alt="Parfum9">
+      <h3>Luxury N°106 (Inspiré par Fucking Fabulous)</h3>
+      <p class="price">52,00 €</p>
+    </div>
+       </section>
+
+  <footer>
+    © 2025 Essence Parfum - Tous droits réservés.<br>
+    Contact:+34 600 39 24 32
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

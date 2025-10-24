@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détails du produit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1 id="product-name"></h1>
+  <button class="btn" onclick="goBack()">← Retour à la boutique</button>
+  <h1 id="product-name"></h1>
+  </header>
+
+  <main class="product-page">
+    <img id="product-img" src="" alt="">
+    <div class="product-info">
+      <h2 id="product-title"></h2>
+      <p id="product-desc"></p>
+      <p id="product-price" class="price"></p>
+     <!-- Quantité et bouton Ajouter au panier -->
+<label for="quantity">Quantité :</label>
+<input type="number" id="quantity" class="quantity-input" value="1" min="1">
+
+<button onclick="addToCart()">Ajouter au panier</button>
+
+    </div>
+  </main>
+
+  <footer>
+    © 2025 Essence Parfum<br>
+    Contact:+34 600 39 24 32
+  </footer>
+
+  <script>
+    const productsData = {
+      Millesime01: {
+        name: "Millésime N°01 (Inspiré par One Million)",
+        price: "35,00 €",
+        desc: "Concentré d’audace, abrite un parfum addictif. Le N°01 s'ouvre sur un cuir sublime chauffé à blanc, plaqué sur un floral tubéreux, puis s'intensifie un cocktail d’épices",
+        img: "photos/N°01.png"
+      },
+      Millesime02: {
+        name: "Millésime N°02 (Inspiré par Acqua di Giò)",
+        price: "35,00 €",
+        desc: "Un parfum inspiré de l'île de Pantelleria. Le N°02 est frais et léger, profond et raffiné. Un parfum intensément masculin qui, avec sa fraîcheur minérale, symbolise la rencontre de la mer avec la roche.",
+        img: "photos/N°01.png"
+      },
+      Millesime03: {
+        name: "Millésime N°03 (Inspiré par Fahrenheit)",
+        price: "35,00 €",
+        desc: "Le N°03 est un parfum emblématique plein de contradictions : frais mais vigoureux, comme une rencontre entre l'eau et le feu. Connu pour ses notes distinctives de cuir et de bois, mélangées avec des touches épicées et fruitées.",
+        img: "photos/N°01.png"
+      },
+      Millesime04: {
+        name: "Millésime N°04 (Inspiré par The One)",
+        price: "35,00 €",
+        desc: "Le N°04 est un parfum qui représente l'élégance moderne, qui s'adresse à un homme galant et pleinement conscient de lui-même : un homme qui n'a rien à prouver. Sa composition équilibrée entre fraîcheur épicée et chaleur boisée en fait un choix idéal pour les occasions formelles comme décontractées. Il se distingue par sa sensualité subtile, sa bonne longévité et une projection modérée.",
+        img: "photos/N°01.png"
+      },
+       luxe05: {
+        name: "Luxury N°74 (Inspiré par Black Afgano)",
+        price: "52,00 €",
+        desc: "Une fragrance qui incarne l'essence de la sophistication et de l'élégance. Conçu pour ceux qui cherchent à se démarquer avec raffinement. Le N°74 s'ouvre sur une note distinctive de Limonène et de Safran, puis s'intensifie avec des senteurs boisées d'Encens, de Café et de Tabac.",
+        img: "photos/N°02.png"
+      },
+      luxe06: {
+        name: "Luxury N°75 (Inspiré par X for Men)",
+        price: "52,00 €",
+        desc: "Original, exotique et renfermant les aphrodisiaques naturels les plus puissants qui soient. Un parfum masculin original et mystérieux, qui combine les règles de la parfumerie conventionnelle avec le moderne et l'exotique. Un must-have pour l'homme aventureux et fort, un parfum intemporel qui laisse un sillage sensuel incomparable et persistant.",
+        img: "photos/N°02.png"
+      },
+      luxe07: {
+        name: "Luxury N°101 (Inspiré par Velvet Amber Skin)",
+        price: "52,00 €",
+        desc: "Le N°101 est parfum oriental ambré qui rallie la méditerranée aux notes douces et balsamiques de l'Arabie. Somptueux comme de la soie moirée.",
+        img: "photos/N°03.png"
+      },
+     luxe08: {
+        name: "Luxury N°102 (Inspiré par Velvet Amber Sun)",
+        price: "52,00 €",
+        desc: "Comme un vent chaud d'Orient, l'Ylang-Ylang aux pétales jaunes déploie sa force exotique sur un accord ambré de Vanille et de Ciste labdanum. Au fur et à mesure que la fragrance évolue, l'onctuosité du bois de Santal s'imprègne d'un subtil voile fumé. Le fond est doux et persistant, caractérisé par les résines et les bois ambrés.",
+        img: "photos/N°02.png"
+      },
+      Gels09: {
+        name: "Gel douche N°01 (Inspiré par One Million)",
+        price: "15,90 €",
+        desc: "Le gel douche parfumé N°01 de Olfazeta a une texture douce. Sa formule, enrichie de notes aromatiques, nettoie en douceur les peaux les plus sensibles. Il nourrit, hydrate et protège, laissant la peau douce au quotidien. Le parfum délicat laisse sur la peau une odeur persistante.",
+        img: "photos/N°04.png"
+      },
+      Gels10: {
+        name: "Gel douche N°02 (Inspiré par Acqua di Giò)",
+        price: "15,90 €",
+        desc: "Le gel douche parfumé N°02 de Olfazeta a une texture douce. Sa formule, enrichie de notes aromatiques, nettoie en douceur les peaux les plus sensibles. Il nourrit, hydrate et protège, laissant la peau douce au quotidien. Le parfum délicat laisse sur la peau une odeur persistante.",
+        img: "photos/N°04.png"
+      },
+      Gels11: {
+        name: "Gel douche N°03 (Inspiré par Fahrenheit)",
+        price: "15,90 €",
+        desc: "Le gel douche parfumé N°03 de Olfazeta a une texture douce. Sa formule, enrichie de notes aromatiques, nettoie en douceur les peaux les plus sensibles. Il nourrit, hydrate et protège, laissant la peau douce au quotidien. Le parfum délicat laisse sur la peau une odeur persistante.",
+        img: "photos/N°04.png"
+      },
+      Gels12: {
+        name: "Gel douche N°07 (Inspiré par J’adore)",
+        price: "15,90 €",
+        desc: "Le gel douche parfumé N°07 de Olfazeta a une texture douce. Sa formule, enrichie de notes aromatiques, nettoie en douceur les peaux les plus sensibles. Il nourrit, hydrate et protège, laissant la peau douce au quotidien. Le parfum délicat laisse sur la peau une odeur persistante.",
+        img: "photos/N°04.png"
+      },
+      Creme13: {
+        name: "Crème parfumée N°07 (Inspiré par J’adore)",
+        price: "17,90 €",
+        desc: "Enrichie en huile d’Argan, huile d’amande douce et Protéines de soie La crème corporelle parfumée Olfazeta laisse la peau hydratée, douce et parfumée. La présence de protéines de soie et d'huiles d'argan et d'amande douce améliore l'élasticité de la peau et la rend particulièrement douce et soyeuse au toucher. La peau semble plus lisse, plus lumineuse et plus uniforme.",
+        img: "photos/N°05.png"
+      },
+      Creme14: {
+        name: "Crème parfumée N°10 (Inspiré par Alien)",
+        price: "17,90 €",
+        desc: "Enrichie en huile d’Argan, huile d’amande douce et Protéines de soie  La crème corporelle parfumée Olfazeta laisse la peau hydratée, douce et parfumée. La présence de protéines de soie et d'huiles d'argan et d'amande douce améliore l'élasticité de la peau et la rend particulièrement douce et soyeuse au toucher. La peau semble plus lisse, plus lumineuse et plus uniforme.",
+        img: "photos/N°05.png"
+      },
+      Creme15: {
+        name: "Crème parfumée N°19 (Inspiré par Lady Million)",
+        price: "17,90 €",
+        desc: "Enrichie en huile d’Argan, huile d’amande douce et Protéines de soieLa crème corporelle parfumée Olfazeta laisse la peau hydratée, douce et parfumée. La présence de protéines de soie et d'huiles d'argan et d'amande douce améliore l'élasticité de la peau et la rend particulièrement douce et soyeuse au toucher. La peau semble plus lisse, plus lumineuse et plus uniforme.",
+        img: "photos/N°05.png"
+      },
+      Creme16: {
+        name: "Crème parfumée N°23 (Inspiré par Hypnotic Poison)",
+        price: "17,90 €",
+        desc: "Enrichie en huile d’Argan, huile d’amande douce et Protéines de soieLa crème corporelle parfumée Olfazeta laisse la peau hydratée, douce et parfumée. La présence de protéines de soie et d'huiles d'argan et d'amande douce améliore l'élasticité de la peau et la rend particulièrement douce et soyeuse au toucher. La peau semble plus lisse, plus lumineuse et plus uniforme.",
+        img: "photos/N°05.png"
+      },
+      luxe17: {
+        name: "Luxury N°106 (Inspiré par Fucking Fabulous)",
+        price: "52,00 €",
+        desc: "Parfum audacieux et extravagant, conçu pour ceux qui n'ont pas peur d'affirmer leur style unique. Idéal pour les soirées et les occasions spéciales, le N°106 dégage une aura de confiance et de glamour. Cette fragrance est une signature olfactive mémorable et audacieuse, idéale pour ceux qui souhaitent laisser une impression durable et inoubliable.",
+        img: "photos/N°06.png"
+      },
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get("id");
+    const product = productsData[productId];
+50
+
+    if (product) {
+      document.getElementById("product-title").innerText = product.name;
+      document.getElementById("product-desc").innerText = product.desc;
+      document.getElementById("product-price").innerText = product.price;
+      document.getElementById("product-img").src = product.img;
+    }
+
+    function addToCart() {
+  const quantity = parseInt(document.getElementById("quantity").value) || 1;
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  // Vérifier si le produit est déjà dans le panier
+  const existingProduct = cart.find(item => item.id === productId);
+  if (existingProduct) {
+    existingProduct.quantity += quantity; // ajouter la quantité
+  } else {
+    cart.push({
+      id: productId,
+      name: product.name,
+      price: product.price,
+      img: product.img,
+      quantity: quantity
+    });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert(`${product.name} ajouté au panier (${quantity}) !`);
+}
+
+
+      function goBack() {
+  window.location.href = "index.html";
+}
+
+  </script>
+</body>
+</html>

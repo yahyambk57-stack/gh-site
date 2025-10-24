@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Votre Panier</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1> Votre Panier</h1>
+  </header>
+
+  <main id="cartContainer" class="product-grid"></main>
+  <footer>
+    <div class="controls">
+      <button class="btn" onclick="goBack()">← Retour à la boutique</button>
+      <button class="btn" onclick="clearCart()">Vider le panier</button>
+      <!-- Total du panier -->
+<button class="cart-total-btn">Total: 0 €</button>
+  <a href="https://wa.me/+34600392432?" target="_blank" class="btn">
+  Commander via WhatsApp
+</a>
+
+</a>
+    </div>
+    <p>© 2025 Essence Parfum<br>
+    Contact:+34 600 39 24 32</p>
+  </footer>
+
+  <script>
+const cartContainer = document.getElementById("cartContainer");
+const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+// Afficher le panier
+if (cart.length === 0) {
+  cartContainer.innerHTML = "<p style='text-align:center; font-size:18px;'>Votre panier est vide</p>";
+} else {
+  cartContainer.innerHTML = cart.map(item => `
+    <div class="product-card">
+      <img src="${item.img}" alt="${item.name}">
+      <h3>${item.name}</h3>
+      <p>${item.price}</p>
+      <p>Quantité: ${item.quantity}</p>
+    </div>
+  `).join("");
+}
+
+// Mettre à jour le total
+function updateTotal() {
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let total = 0;
+
+  cart.forEach(item => {
+    const priceNumber = parseFloat(item.price.replace("€", "").replace(",", ".").trim());
+    total += priceNumber * (item.quantity || 1); // prend en compte la quantité
+  });
+
+  const totalBtn = document.querySelector(".cart-total-btn");
+  if (totalBtn) {
+    totalBtn.innerText = `Total: ${total.toFixed(2)} €`;
+  }
+}
+
+// Appeler la fonction après l'affichage des produits
+updateTotal();
+
+// Bouton "Retour"
+function goBack() {
+  window.location.href = "index.html";
+}
+
+// Vider le panier
+function clearCart() {
+  localStorage.removeItem("cart");
+  location.reload();
+}
+</script>
+
+
+
+</body>
+</html>
+
+
